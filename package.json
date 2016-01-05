@@ -1,0 +1,39 @@
+{
+  "name": "@starefossen/fra-barnehagen",
+  "version": null,
+  "description": "Download documents from kindergarden and email them",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint index.js test/",
+    "test": "mocha -t 10000 -c --check-leaks -R tap test/",
+    "watch": "mocha -t 10000 -w -b -c --check-leaks -R progress test/",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Starefossen/fra-barnehagen.git"
+  },
+  "keywords": [
+    "Email",
+    "Kindergarden"
+  ],
+  "author": "Hans Kristian Flaatten <hans@starefossen.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Starefossen/fra-barnehagen/issues"
+  },
+  "homepage": "https://github.com/Starefossen/fra-barnehagen#readme",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "node-schedule": "^0.6.0",
+    "request": "^2.67.0",
+    "sendgrid": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "2.1.1",
+    "mocha": "^2.3.4"
+  }
+}
