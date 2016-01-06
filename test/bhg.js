@@ -5,24 +5,24 @@ const bhg = require('../lib/bhg');
 
 let BHG_SESSION = null;
 
-describe('getSession()', () => {
-  it('returns session for valid username and password', (done) => {
-    const user = process.env.BHG_USERNAME;
-    const pass = process.env.BHG_PASSWORD;
+before((done) => {
+  const user = process.env.BHG_USERNAME;
+  const pass = process.env.BHG_PASSWORD;
 
-    bhg.getSession(user, pass, (e, session) => {
-      assert.ifError(e);
+  bhg.getSession(user, pass, (e, session) => {
+    assert.ifError(e);
+    BHG_SESSION = session;
 
-      assert.equal(typeof session, 'string');
-      /PHPSESSID=[0-9a-f]{32}/.test(session);
-
-      BHG_SESSION = session;
-
-      done();
-    });
+    done();
   });
 });
 
+describe('getSession()', () => {
+  it('returns session for valid username and password', () => {
+    assert.equal(typeof BHG_SESSION, 'string');
+    /PHPSESSID=[0-9a-f]{32}/.test(BHG_SESSION);
+  });
+});
 
 describe('getEntries()', () => {
   it('returns list of recent news entries', (done) => {
