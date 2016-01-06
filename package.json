@@ -4,6 +4,7 @@
   "description": "Download documents from kindergarden and email them",
   "main": "index.js",
   "scripts": {
+    "start": "supervisor index.js",
     "lint": "eslint index.js test/",
     "test": "mocha -t 10000 -c --check-leaks -R tap test/",
     "watch": "mocha -t 10000 -w -b -c --check-leaks -R progress test/",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "2.1.1",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "supervisor": "^0.9.1"
   }
 }
