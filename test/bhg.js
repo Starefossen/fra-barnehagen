@@ -44,7 +44,7 @@ describe('getEntries()', () => {
 });
 
 describe('getEntry()', () => {
-  it('retruns data for valid news entry', (done) => {
+  it('retruns data for valid document news entry', (done) => {
     bhg.getEntry(BHG_SESSION, 3609, (e, entry) => {
       assert.ifError(e);
 
@@ -55,6 +55,26 @@ describe('getEntry()', () => {
           id: 2227,
           url: `${process.env.BHG_URL}/dokument/?id=2227`,
           title: 'Månedsplan for Bjerknesparken, avd. Nordlys, Jan.2016',
+        }],
+        albums: [],
+      });
+
+      done();
+    });
+  });
+
+  it('returns data for valid album news entry', (done) => {
+    bhg.getEntry(BHG_SESSION, 3562, (e, entry) => {
+      assert.ifError(e);
+
+      assert.deepEqual(entry, {
+        title: 'Bilder, Nordlys uke 50',
+        body: 'Hei, her er noen bilder fra uken som har gått.\r\nFortsatt god helg :)',
+        documents: [],
+        albums: [{
+          id: 2300,
+          title: 'Nordlys, bilder, uke 50 &middot; 13.12.2015',
+          url: 'https://www.bjerknesparkenbarnehage.no/foreldre/galleri/?id=2300',
         }],
       });
 
